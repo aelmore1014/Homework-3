@@ -1,66 +1,114 @@
-<!doctype HTML>
+<!DOCTYPE html>
+<html pwdLength="en-us">
+
 <head>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="style.css">
-        <title>Password Generator</title>
+  <meta charset="UTF-8">
+  <title>Password Generator</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="stylesheet.css" type="text/css">
 </head>
 
 <body>
-        <div class="container fill bg-light">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="wrapper">
+        <div class="header text-center mx-auto text-muted ">
+          <h1>Password Generator</h1>
+        </div>
+        <div class="generatorcontainer card-body mx-auto text-center">
 
-                <div class="row">
-        
-                    <div class="col-lg-8 col-sm-12 mx-auto">
-                        
-                        <div class= "content">
-                    <h1>Password Generator</h1>
+          <h2 class="card-title">Generate Password</h2>
 
+          <div class="borders">
 
-                        </div>
-                        </div>
-<div id = "holder">
-        <div class="jumbotron">
-            <div class= "generatortitle">
-                <h1 class= "generator">Generate a Password</h1>
+            <div class="form-group">
+
+              <textarea class="textBox container text-center text-muted" id="passwordTextArea">Secure Password</textarea>
             </div>
-                <div class= "inputcontainer">
-                    
-                    <input type= "text" class= "dotted">
-                   
-<script src= "javascript.js">
-    
+          </div>
+          <div class="buttons">
+            <button onclick="password()" class="btn btn-danger mr-5 mt-2 mb-5" id="genBtn">Generate Password</a>
+              <button onclick="myFunction()" class="btn btn-secondary ml-5 mt-2 mb-5" id="copyBtn">Copy To
+                Clipboard</button>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+     
+      var lowerCase = "abcdefghijklmnopqrstuvwxyz";
+      var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      var numbers = "1234567890";
+      var symbols = " !#$%&'()*+,-./:;<=>?@[]^_`{|}~ ";
+      var randomPassword = "";
+ 
+      function password() {
+        
+        var pwdLength = parseInt(prompt("How many characters would you like your password to have? (8-128)"));
+        var pickedCharacters = "";
+        
+        if (pwdLength > 7 && pwdLength < 129) {
+          alert("You would like " + pwdLength + " numbers in your password");
+        } else if (Number.isNaN(pwdLength)) {
+          alert("That's not a number.");
+          password();
+        } else {
+          alert("You have entered an invalid length");
+          password();
+        }
+        var specChar = confirm("Would you like your password to contain special characters?");
+        if (specChar === true) {
+          pickedCharacters += symbols;
+        } else {
+          console.log("No symbols.");
+        }
+        var upper = confirm("Would you like your password to contain uppercase letters?");
+        if (upper === true) {
+          pickedCharacters += upperCase;
+        } else {
+          console.log("No uppercase.");
+        }
+        var lower = confirm("Would you like your password to contain lowercase letters?");
+        if (lower === true) {
+          pickedCharacters += lowerCase;
+        } else {
+          console.log("No lowercase.");
+        }
+        var numbersTrue = confirm("Would you like your password to contain numbers?");
+        if (numbersTrue === true) {
+          pickedCharacters += numbers;
+          console.log(pickedCharacters);
+        } else {
+          console.log("No numbers.");
+        }
+        if (numbersTrue === false && lower === false && upper === false && specChar === false){
+          alert("Please pick at least one kind of character for your password.");
+          password();
+        }
+         for (var i = 0; i < pwdLength; i++) {
+          var randomCharacters = pickedCharacters[Math.floor(Math.random() * pickedCharacters.length)];
+          randomPassword += randomCharacters;
+          console.log(randomPassword);
+        }
+        
+        document.getElementById("passwordText").innerHTML = randomPassword;
+        }
+      
+       function myFunction() {
+         
+           var copyText = document.getElementById("passwordText");
+         
+          copyText.select();
+          copyText.setSelectionRange(0, 99999); 
+          document.execCommand("copy");
+       
+          alert("Copied the text: " + randomPassword);
+        }
     </script>
-
-</input>
-<br><br>
-<div>
-        <div class="container">
-                <div class="row" id = "buttonrow">
-                  <div class="col">
-                        <button class= "btn btn-danger btn-lg" onclick="generate()">Generate Password</button>
-                  </div>
-                  <div class="col">
-                        <button class= "btn btn-secondary btn-lg" onclick="copyPassword()">Copy to Clipboard</button>
-                  </div>
-                </div>
-                
-
-
-
-</div>
-                </div>
-                </div>
-
-                
-              </div>
-</div>
-
-</div>
-</div>
-
-
-
-
-
-
 </body>
+
+</html>

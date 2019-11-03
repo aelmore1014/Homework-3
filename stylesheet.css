@@ -1,51 +1,28 @@
-.fill{
 
-        min-height: 100%;
-        height: 100%;
-        margin:auto;
-        
-        
-
-}
-html, body {
-    height: 100%;
-    
-  }
-  .jumbotron{
-      margin-left:100px;
-      margin-right:100px;
-      width:100%;
-      background:white;
-  }
-  .dotted{
-    border: 2px dotted grey;
-    margin-left:35px;
-    width:90%;
-    margin-right:35px;
-    height:200px;
-  }
-  .generator 
+.generatorcontainer {
+    background: white;
+    height: 400px;
+    width: 760px;
+    margin: 20px 0 20px 0;
+    }
   
-  {
-     margin-left:35px;
+    .borders{
+      border-top: solid 3px darkgray;
+      border-bottom: solid 3px darkgray;
+      margin: 15px 0 15px 0;
+    }
+  
+  h1 {
+    margin: 30px 0;
   }
-  #holder{
-    
-    margin-right:200px;
-    width:100%;
-    
+  body {
+    background-color: lightgray;
   }
-  .inputcontainer
-  {
-      margin-top:40px;
-   
-  }
-  .generatortitle
-  {
-      border-bottom: solid grey 3px;
-      margin-left:35px;
-      margin-right:50px;
-  }
-  #buttonrow{
-margin-left: 35px;
+  
+  #passwordTextArea {
+    border: dashed 2px #a9a9a9;
+    height: 150px;
+    margin: 20px 0 0 0;
+    font-size: 25px;
+    background: white;
   }
